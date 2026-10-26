@@ -43,7 +43,7 @@ class ListArray : public List<T> {
 
 		T get(int pos) override {
 			if(pos>=n || pos < 0){
-				throw std::out_of_range("fuera de rango");
+				throw std::out_of_range("Posición inválida!");
 			}
 			return arr[pos];
 		}
@@ -62,7 +62,7 @@ class ListArray : public List<T> {
 
 		void insert(int pos, T e) override {
 			if(pos>n || pos < 0){
-				throw std::out_of_range("fuera de rango");
+				throw std::out_of_range("Posición inválida!");
 			}
 			if((n+1) >= max){
 				resize((2*max));
@@ -97,11 +97,7 @@ class ListArray : public List<T> {
 			return get(pos);
 		}
 
-		friend std::ostream& operator<<(std::ostream &out, ListArray<T> &list);
-};
-
-		template <typename T>
-		std::ostream& operator<<(std::ostream &out, ListArray<T> &list) {
+		friend std::ostream& operator<<(std::ostream &out, ListArray<T> &list) {
 			out << "List => [";
 			for(int i=0;i<list.n;i++){
 				out << "\n  " << list.arr[i];
@@ -112,3 +108,4 @@ class ListArray : public List<T> {
 			out << "]";
 			return out;
 		}
+};
